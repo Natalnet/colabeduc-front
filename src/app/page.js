@@ -1,95 +1,208 @@
-import Image from 'next/image'
+"use client"
+
 import styles from './page.module.css'
+import Link from 'next/link'
+import Image from 'next/image'
+import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 
 export default function Home() {
+
+  const router = useRouter();
+  const [carrouselPos, setCarrouselPos] = useState(0);
+
+  const handleCarrousel = (direction) => {
+
+    let newCarrouselPos = carrouselPos;
+
+    newCarrouselPos = carrouselPos + direction;
+
+    if(newCarrouselPos > 66.66){
+      newCarrouselPos = 0;
+    }else if(newCarrouselPos < 0){
+      newCarrouselPos = 66.66;
+    }
+
+    setCarrouselPos(newCarrouselPos);
+
+  }
+
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.js</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
+
+    <main>
+
+      <section className={styles.topDiv}>
+
+        {/* Header */}
+        <header className={styles.header}>
+
+          <div className={styles.headerIconContainer}>
+
+            <Link
+            href="https://www.instagram.com/colabeduc/"
             target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
+            className={styles.instagramLink}
+            >
+
+              <Image
+              src="/instagramIcon.svg"
+              width={24}
               height={24}
-              priority
-            />
-          </a>
+              alt="instagram icon"
+              className={styles.instagramIcon}
+              />
+
+            </Link>
+
+            <div>
+
+              <a>Sobre Nós</a>
+              <a>Contato</a>
+
+            </div>
+
+          </div>
+
+        </header>
+
+        {/* Main Info */}
+        <div className={styles.mainInfo}>
+
+          {/* Nav Buttons & Logo */}
+          <nav className={styles.mainNav}>
+
+            <div className={styles.logoContainer}>
+
+              <h1>ColabEduc</h1>
+              <h2>Juntos, Construindo a educação</h2>
+              
+            </div>
+
+            <div className={styles.navButtonContainer}>
+
+              <a
+              onClick={() => router.push('login')}
+              >Cadastro</a>
+              <a
+              onClick={() => router.push('login')}
+              >Login</a>
+
+            </div>
+
+          </nav>
+
+          {/* Stat Cards */}
+          <div className={styles.statsCards}>
+
+            <div className={styles.statCard}>
+
+            </div>
+
+            <div className={styles.statCard}>
+
+            </div>
+
+            <div className={styles.statCard}>
+
+            </div>
+
+            <div className={styles.statCard}>
+
+            </div>
+
+          </div>
+
         </div>
-      </div>
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+      </section>
 
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
+      <section className={styles.carrouselSection}>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
+        <div className={styles.topPurple}></div>
+        <div className={styles.bottomWhite}></div>
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
+        <div className={styles.carrouselContainer}>
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+          <button
+          onClick={() => handleCarrousel (-33.33)}
+          >
+
+            <Image
+            src="/arrow.png"
+            width={20}
+            height={20}
+            alt='left Arrow'
+            className={styles.leftArrow}
+            />
+            
+          </button>
+
+          <button
+          onClick={() => handleCarrousel (33.33)}
+          >
+
+            <Image
+            src="/arrow.png"
+            width={20}
+            height={20}
+            alt='left Arrow'
+            className={styles.rightArrow}
+            />
+
+          </button>
+
+          <div 
+          className={styles.carrousel}
+          style={{['--carrousel-pos'] : -carrouselPos + "%"}}
+          >
+
+            <div className={styles.carrouselCard}>
+
+              <Image
+              src="/colabImage2.png"
+              width={1200}
+              height={540}
+              alt='colab image 2'
+              className={styles.carrouselImage}
+              />
+
+            </div>
+
+            <div className={styles.carrouselCard}>
+
+              <Image
+              src="/colabImage3.png"
+              width={1200}
+              height={540}
+              alt='colab image 3'
+              className={styles.carrouselImage}
+              />
+
+            </div>
+
+            <div className={styles.carrouselCard}>
+
+              <Image
+              src="/colabImage1.png"
+              width={1200}
+              height={540}
+              alt='colab image 1'
+              className={styles.carrouselImage}
+              />
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <div className={styles.carrouselInfo}>
+          <p>O ColabEduc é um sistema de desenvolvimento colaborativo de objetos de aprendizagem, sejam eles virtuais ou reais. O ColabEduc cria um ambiente onde profissionais de diferentes áreas possam colaborar, construir e compartilhar seus objetos de aprendizagem.</p>
+        </div>
+
+      </section>
+
     </main>
+
   )
 }
