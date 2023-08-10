@@ -1,4 +1,46 @@
 .main{
     width: 100%;
     height: 100vh;
+    background-image: linear-gradient(90deg, #8000FF, #A64DFF);
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+.header{
+    width: 100%;
+    height: 2rem;
+    background-color: #0000007A;
+}
+
+.loginSection{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginContainer{
+    width: 1200px;
+    height: 80%;
+    background-image: linear-gradient(75deg, white 0%, white 39.5%, #FAF5FF 40%);
+    border-radius: 20px;
+}
+
+.infoContainer{
+    width: 40%;
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+.infoContainer input{
+    margin: 2rem 0;
+    width: 50%;
+    height: 2rem;
 }
