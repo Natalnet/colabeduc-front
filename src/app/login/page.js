@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import styles from './login.module.css'
 import axios from 'axios';
+import Header from '../Components/Header';
 
 export default function login(){
 
@@ -27,9 +28,9 @@ export default function login(){
     return(
         <main className={styles.main}>
 
-            <header className={styles.header}>
+            {/* Header */}
 
-            </header>
+            <Header/>
 
             <section className={styles.loginSection}>
 
@@ -41,11 +42,13 @@ export default function login(){
                         type="text"
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
+                        placeholder='Nome de usuario'
                         />
                         <input
                         type="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
+                        placeholder='Senha'
                         />
 
                         <button

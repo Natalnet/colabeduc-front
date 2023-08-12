@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import Header from './Components/Header'
 
 export default function Home() {
 
@@ -34,36 +35,8 @@ export default function Home() {
       <section className={styles.topDiv}>
 
         {/* Header */}
-        <header className={styles.header}>
 
-          <div className={styles.headerIconContainer}>
-
-            <Link
-            href="https://www.instagram.com/colabeduc/"
-            target="_blank"
-            className={styles.instagramLink}
-            >
-
-              <Image
-              src="/instagramIcon.svg"
-              width={24}
-              height={24}
-              alt="instagram icon"
-              className={styles.instagramIcon}
-              />
-
-            </Link>
-
-            <div>
-
-              <a>Sobre Nós</a>
-              <a>Contato</a>
-
-            </div>
-
-          </div>
-
-        </header>
+        <Header/>
 
         {/* Main Info */}
         <div className={styles.mainInfo}>
