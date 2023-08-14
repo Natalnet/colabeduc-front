@@ -38,26 +38,45 @@ export default function login(){
 
                     <div className={styles.infoContainer}>
 
-                        <input
-                        type="text"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
-                        placeholder='Nome de usuario'
-                        />
-                        <input
-                        type="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        placeholder='Senha'
-                        />
+                        <div className={styles.inputContainer}>
 
-                        <button
-                        onClick={handleLoginSubmit}
-                        >submit</button>
+                            <input
+                            type='input'
+                            onChange={(e) => setUsername(e.target.value)}
+                            value={username}
+                            placeholder="   "
+                            />
+
+                            <span>
+                                Nome de usuario
+                            </span>
+
+                            <label>
+                                Nome de usuario
+                            </label>
+
+                        </div>
+
+                        <div className={styles.inputContainer}>
+
+                            <input
+                            type='password'
+                            onChange={(e) => setPassword(e.target.value)}
+                            value={password}
+                            placeholder="   "
+                            />
+
+                            <span>
+                                Senha
+                            </span>
+
+                            <label>
+                                Senha
+                            </label>
+
+                        </div>
 
                     </div>
-
-                    <div></div>
 
                 </div>
 

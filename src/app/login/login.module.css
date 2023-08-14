@@ -39,14 +39,92 @@
     border-bottom-left-radius: 20px;
 }
 
-.infoContainer input{
-    margin: 2rem 0;
+.inputContainer{
     width: 50%;
-    height: 2rem;
-    border: none;
-    border-bottom: 1px solid #8000FF;
+    background-color: grey;
+    height: 3em;
+    position: relative;
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-end;
+    border-bottom: 2px solid #8000FF;
+    margin-top: 2em;
 }
 
-.infoContainer input:focus{
-    outline: none!important;
+.inputContainer span{
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    padding-left: 0.3em;
+    font-size: 0.8em;
+    display: none;
+}
+
+.inputContainer input{
+    width: 100%;
+    height: 100%;
+    font-size: 1em;
+    padding-left: 0.5em;
+    padding-top: 0.5em;
+    border: none;
+}
+
+.inputContainer input:focus{
+    outline: none;
+}
+
+.inputContainer input:focus ~ label{
+    animation-name: labelVanish;
+    animation-duration: 250ms;
+    animation-fill-mode: forwards;
+}
+
+.inputContainer input:focus ~ span{
+    display: inline;
+    animation-name: spanVanish;
+    animation-duration: 250ms;
+    animation-fill-mode: forwards;
+}
+
+.inputContainer label{
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    pointer-events: none;
+    padding-left: 1em;
+}
+
+.inputContainer input:not(:placeholder-shown) ~ label{
+    display: none;
+}
+
+.inputContainer input:not(:placeholder-shown) ~ span{
+    display: inline;
+    animation-duration: 0ms;
+}
+
+@keyframes labelVanish{
+    from{
+        opacity: 1;
+        transform: scale(100%) translateY(-50%);
+    }
+    to{
+        opacity: 0;
+        transform: scale(0%) translateY(-20px) translateX(-15px);
+    }
+}
+
+@keyframes spanVanish{
+
+    from{
+        opacity: 0;
+        transform: scale(0%) translateY(15px) translateY(15px);
+    }
+    to{
+        opacity: 1;
+        transform: scale(100%) translateY(0) translateX(0);
+    }
+    
 }
