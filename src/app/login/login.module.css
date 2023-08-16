@@ -24,9 +24,12 @@
 .loginContainer{
     width: 1200px;
     height: 80%;
-    background-image: linear-gradient(75deg, white 0%, white 39.5%, #FAF5FF 40%);
+    background-image: linear-gradient(105deg, white 0%, white 39.5%, #FAF5FF 40%);
     border-radius: 20px;
 }
+
+
+/* Input container */
 
 .infoContainer{
     width: 40%;
@@ -37,7 +40,20 @@
     align-items: center;
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
+    position: relative;
 }
+
+    /* Login Header */
+
+.loginHeader{
+    color: #8000FF;
+    font-size: 2rem;
+    position: absolute;
+    left: 50%;
+    top: 20%;
+    transform: translateX(-50%) translateY(-50%);
+}
+    /* ---- */
 
 .inputContainer{
     width: 50%;
@@ -59,6 +75,7 @@
     padding-left: 0.3em;
     font-size: 0.8em;
     display: none;
+    color: #666666;
 }
 
 .inputContainer input{
@@ -67,6 +84,7 @@
     font-size: 1em;
     padding-left: 0.5em;
     padding-top: 0.5em;
+    padding-right: 30px;
     border: none;
 }
 
@@ -94,6 +112,7 @@
     transform: translateY(-50%);
     pointer-events: none;
     padding-left: 1em;
+    color: #666666;
 }
 
 .inputContainer input:not(:placeholder-shown) ~ label{
@@ -127,4 +146,57 @@
         transform: scale(100%) translateY(0) translateX(0);
     }
     
+}
+
+.passwordView{
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    margin-right: 5px;
+    filter: opacity(0);
+}
+
+.inputContainer input:focus ~ .passwordView{
+    filter: opacity(1);
+}
+
+.inputContainer input:not(:placeholder-shown) ~ .passwordView{
+    filter: opacity(1);
+}
+
+/* Login button */
+
+.forgotPassword{
+    width: 50%;
+    text-align: end;
+    font-size: 0.8em;
+    margin-top: 0.5rem;
+    color: #8000FF;
+}
+
+.forgotPassword:hover{
+    cursor: pointer;
+    filter: brightness(0.8);
+}
+
+.loginButton{
+    background-image: linear-gradient(90deg ,#8000FF, #9b37ff);
+    border: none;
+    border-radius: 10px;
+    padding: 0.75em 1em;
+    margin-top: 2em;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    transition: 200ms ease-in-out;
+}
+
+.loginButton:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+    filter: brightness(1.1);
+}
+
+    /* login arrow */
+.loginButton :nth-child(1){
+    filter: invert(100%);
 }

@@ -1,5 +1,8 @@
 "use client"
 
+//"Icon made by Freepik from www.flaticon.com"
+// remeber to attribute credit for the icons
+
 import styles from './page.module.css'
 import Link from 'next/link'
 import Image from 'next/image'

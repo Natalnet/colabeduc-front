@@ -1,14 +1,22 @@
 "use client"
 
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import styles from './login.module.css'
 import axios from 'axios';
 import Header from '../Components/Header';
+import Image from 'next/image';
 
 export default function login(){
 
+    const openEye = 'red-eye.png'
+    const closedEye = 'hide.png'
+
+    const inputRef = useRef(null);
+
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [passwordView, setPasswordView] = useState(closedEye);
+    const [passwordSee, setPasswordSee] = useState('password');
 
     const handleLoginSubmit = () => {
 
@@ -25,6 +33,23 @@ export default function login(){
 
     }
 
+    const handlePasswordView = () => {
+
+        inputRef.current.focus();
+
+        if(passwordView === closedEye){
+
+            setPasswordView(openEye);
+            setPasswordSee('input')
+            return;
+
+        }
+
+        setPasswordView(closedEye);
+        setPasswordSee('password');
+
+    }
+
     return(
         <main className={styles.main}>
 
@@ -36,8 +61,14 @@ export default function login(){
 
                 <div className={styles.loginContainer}>
 
+
                     <div className={styles.infoContainer}>
 
+                        <h1
+                        className={styles.loginHeader}
+                        >Login</h1>
+
+                        {/* Input Container */}
                         <div className={styles.inputContainer}>
 
                             <input
@@ -48,11 +79,11 @@ export default function login(){
                             />
 
                             <span>
-                                Nome de usuario
+                                Nome de usuário
                             </span>
 
                             <label>
-                                Nome de usuario
+                                Nome de usuário
                             </label>
 
                         </div>
@@ -60,10 +91,20 @@ export default function login(){
                         <div className={styles.inputContainer}>
 
                             <input
-                            type='password'
+                            ref={inputRef}
+                            type={passwordSee}
                             onChange={(e) => setPassword(e.target.value)}
                             value={password}
                             placeholder="   "
+                            />
+
+                            <Image
+                            src={`/${passwordView}`}
+                            width={24}
+                            height={24}
+                            alt="Password view"
+                            className={styles.passwordView}
+                            onClick={handlePasswordView}
                             />
 
                             <span>
@@ -75,6 +116,24 @@ export default function login(){
                             </label>
 
                         </div>
+
+                        <span
+                        className={styles.forgotPassword}
+                        >
+                            Esqueceu sua senha?
+                        </span>
+
+                        <button
+                        className={styles.loginButton}
+                        onClick={handleLoginSubmit}
+                        >
+                            <Image
+                            src={'/arrow.png'}
+                            height={24}
+                            width={24}
+                            alt='login arrow'
+                            />
+                        </button>
 
                     </div>
 
