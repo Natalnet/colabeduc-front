@@ -8,8 +8,8 @@ import Image from 'next/image';
 
 export default function login(){
 
-    const openEye = 'red-eye.png'
-    const closedEye = 'hide.png'
+    const openEye = 'red-eye.png';
+    const closedEye = 'hide.png';
 
     const inputRef = useRef(null);
 
@@ -25,10 +25,10 @@ export default function login(){
             password : password
         })
         .then(function(response){
-            console.log(response)
+            changeToken(response.data.access_token);
         })
         .catch(function(error){
-            console.log(error)
+            console.log("handle login error");
         });
 
     }
@@ -40,13 +40,39 @@ export default function login(){
         if(passwordView === closedEye){
 
             setPasswordView(openEye);
-            setPasswordSee('input')
+            setPasswordSee('input');
             return;
 
         }
 
         setPasswordView(closedEye);
         setPasswordSee('password');
+
+    }
+
+    const changeToken = (fetchedToken) => {
+
+        axios.post('/api/login',{
+            apiToken : fetchedToken,
+        })
+        .then(function(response){
+            console.log(response);
+        })
+        .catch(function(error){
+            console.log(error);
+        });
+
+    }
+
+    const fetchApiToken = () => {
+
+        axios.get('/api/login', {})
+        .then(function(response){
+            console.log(response)
+        })
+        .catch(function(error){
+            console.log(error)
+        });
 
     }
 
@@ -133,6 +159,12 @@ export default function login(){
                             width={24}
                             alt='login arrow'
                             />
+                        </button>
+
+                        <button
+                        onClick={fetchApiToken}
+                        >
+                            apiTest
                         </button>
 
                     </div>

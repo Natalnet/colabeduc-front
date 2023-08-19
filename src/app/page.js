@@ -31,6 +31,15 @@ export default function Home() {
 
   }
 
+  const testFetch = async () => {
+
+    let teste = await fetch('/api/login');
+    let testJson = await teste.json();
+
+    console.log(testJson);
+
+  }
+
   return (
 
     <main>
@@ -57,7 +66,7 @@ export default function Home() {
             <div className={styles.navButtonContainer}>
 
               <a
-              onClick={() => router.push('login')}
+              onClick={testFetch}
               >Cadastro</a>
               <a
               onClick={() => router.push('login')}
