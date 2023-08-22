@@ -1,12 +1,16 @@
 "use client"
 
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import styles from './login.module.css'
 import axios from 'axios';
 import Header from '../Components/Header';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
+import { hasCookie, setCookie } from 'cookies-next';
 
 export default function login(){
+
+    const router = useRouter();
 
     const openEye = 'red-eye.png';
     const closedEye = 'hide.png';
@@ -18,6 +22,12 @@ export default function login(){
     const [passwordView, setPasswordView] = useState(closedEye);
     const [passwordSee, setPasswordSee] = useState('password');
 
+    useEffect(() => {
+
+        if(hasCookie("X_Auth_Token")){router.push("/");};
+
+    },[])
+
     const handleLoginSubmit = () => {
 
         axios.post('http://colabeduc.org/api/login', {
@@ -28,7 +38,7 @@ export default function login(){
             changeToken(response.data.access_token);
         })
         .catch(function(error){
-            console.log("handle login error");
+            console.log(error);
         });
 
     }
@@ -56,22 +66,11 @@ export default function login(){
             apiToken : fetchedToken,
         })
         .then(function(response){
-            console.log(response);
+            setCookie("X_Auth_Token", fetchedToken);
+            router.push("/");
         })
         .catch(function(error){
             console.log(error);
-        });
-
-    }
-
-    const fetchApiToken = () => {
-
-        axios.get('/api/login', {})
-        .then(function(response){
-            console.log(response)
-        })
-        .catch(function(error){
-            console.log(error)
         });
 
     }
@@ -159,12 +158,6 @@ export default function login(){
                             width={24}
                             alt='login arrow'
                             />
-                        </button>
-
-                        <button
-                        onClick={fetchApiToken}
-                        >
-                            apiTest
                         </button>
 
                     </div>

@@ -3,12 +3,12 @@
 //"Icon made by Freepik from www.flaticon.com"
 // remeber to attribute credit for the icons
 
-import styles from './page.module.css'
-import Link from 'next/link'
-import Image from 'next/image'
-import { useState } from 'react'
-import { useRouter } from 'next/navigation'
-import Header from './Components/Header'
+import styles from './page.module.css';
+import Image from 'next/image';
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import Header from './Components/Header';
+import NavButtons from './Components/NavButtons';
 
 export default function Home() {
 
@@ -28,15 +28,6 @@ export default function Home() {
     }
 
     setCarrouselPos(newCarrouselPos);
-
-  }
-
-  const testFetch = async () => {
-
-    let teste = await fetch('/api/login');
-    let testJson = await teste.json();
-
-    console.log(testJson);
 
   }
 
@@ -65,12 +56,7 @@ export default function Home() {
 
             <div className={styles.navButtonContainer}>
 
-              <a
-              onClick={testFetch}
-              >Cadastro</a>
-              <a
-              onClick={() => router.push('login')}
-              >Login</a>
+              <NavButtons/>
 
             </div>
 
