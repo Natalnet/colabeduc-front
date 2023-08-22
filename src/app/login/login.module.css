@@ -26,6 +26,7 @@
     height: 80%;
     background-image: linear-gradient(105deg, white 0%, white 39.5%, #FAF5FF 40%);
     border-radius: 20px;
+    display: flex;
 }
 
 
@@ -199,4 +200,44 @@
     /* login arrow */
 .loginButton :nth-child(1){
     filter: invert(100%);
+}
+
+/* side info */
+
+.sideInfo{
+    width: 60%;
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+}
+
+.sideInfo div{
+    display: flex;
+    flex-flow: column;
+    color: #8000FF;
+}
+
+.sideInfo div h1{
+    font-size: 2rem;
+}
+
+.cadastroButton{
+    background-image: linear-gradient(90deg ,#8000FF, #9b37ff);
+    border: none;
+    border-radius: 20px;
+    padding: 0.75rem 1rem;
+    margin-top: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    transition: 200ms ease-in-out;
+    font-size: 1rem;
+    color: #FAF5FF;
+}
+
+.cadastroButton:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+    filter: brightness(1.1);
 }

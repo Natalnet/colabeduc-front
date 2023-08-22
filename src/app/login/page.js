@@ -82,10 +82,11 @@ export default function login(){
 
             <Header/>
 
+            {/* login section */}
+
             <section className={styles.loginSection}>
 
                 <div className={styles.loginContainer}>
-
 
                     <div className={styles.infoContainer}>
 
@@ -159,6 +160,30 @@ export default function login(){
                             alt='login arrow'
                             />
                         </button>
+
+                    </div>
+
+                    {/* side info */}
+
+                    <div className={styles.sideInfo}>
+
+                        <div></div>
+
+                        <div>
+
+                            <h1>ColabEduc</h1>
+
+                            <span>Juntos, Construindo a educação</span>
+
+                        </div>
+
+                        <div>
+
+                            <span>Ainda não possui conta?</span>
+
+                            <button className={styles.cadastroButton}>Cadastro</button>
+
+                        </div>
 
                     </div>
 
