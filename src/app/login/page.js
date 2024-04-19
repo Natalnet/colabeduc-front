@@ -8,7 +8,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { hasCookie, setCookie } from 'cookies-next';
 
-export default function login(){
+export default function Login(){
 
     const router = useRouter();
 
